@@ -3,7 +3,36 @@ import random
 # Mapping numbers to choices
 options = {1: "rock", 2: "paper", 3: "scissors"}
 
+def display_score(user_score, computer_score):
+    print(f"\nCurrent Score - You: {user_score} | Computer: {computer_score}")
+
+def display_history(history):
+    print("\nGame History:")
+    for round_num, (user_move, computer_move, result) in enumerate(history, 1):
+        print(f"Round {round_num}: You chose {user_move}, Computer chose {computer_move} - {result}")
+
+# Initialize scores and history
+user_score = 0
+computer_score = 0
+history = []
+
+# Get number of rounds for the game
 while True:
+    try:
+        rounds = int(input("Enter the number of rounds you want to play (or '0' to quit): "))
+        if rounds == 0:
+            print("Thanks for playing!")
+            break
+        elif rounds < 1:
+            print("Please enter a positive number.")
+        else:
+            print(f"Great! Let's play Best of {rounds} rounds.")
+            break
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+
+current_round = 1
+while current_round <= rounds:
     # Display options to the user
     print("\nChoose an option:")
     print("1: Rock")
@@ -21,6 +50,7 @@ while True:
     # Handle quitting the game
     if user_choice == 0:
         print("Thanks for playing!")
+        display_history(history)
         break
 
     # Validate user choice
@@ -35,18 +65,37 @@ while True:
 
     # Determine the outcome
     if user_choice == computer_choice:
-        print("It's a tie!")
+        result = "It's a tie!"
     elif (user_choice == 1 and computer_choice == 3) or \
          (user_choice == 2 and computer_choice == 1) or \
          (user_choice == 3 and computer_choice == 2):
-        print("You win!")
+        result = "You win!"
+        user_score += 1
     else:
-        print("You lose!")
+        result = "You lose!"
+        computer_score += 1
 
-"""
-This program allows the user to play the game of Rock, Paper, Scissors against the computer.
-The user is prompted to choose an option (rock, paper, or scissors) by entering a number.
-The computer then randomly selects an option.
-The program determines the outcome of the game and displays the result to the user.
-The game continues until the user chooses to quit by entering '0'.
-"""
+    # Record round result
+    history.append((options[user_choice], options[computer_choice], result))
+    print(result)
+    display_score(user_score, computer_score)
+    
+    # Check if we reached the end of Best of N rounds
+    if user_score > rounds // 2 or computer_score > rounds // 2:
+        break
+
+    current_round += 1
+
+# Display final results and history
+print("\nFinal Results:")
+display_score(user_score, computer_score)
+display_history(history)
+
+if user_score > computer_score:
+    print("Congratulations! You won the game!")
+elif user_score < computer_score:
+    print("Sorry, the computer won the game. Better luck next time!")
+else:
+    print("It's a tie game overall!")
+
+print("Thanks for playing!")
