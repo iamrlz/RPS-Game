@@ -1,4 +1,4 @@
-# Instruction
+# Instructions for you :)
 
 This is a simple Python implementation of the classic **Rock, Paper, Scissors** game.
 
