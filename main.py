@@ -52,6 +52,7 @@ while current_round <= rounds:
         print("Thanks for playing!")
         display_history(history)
         break
+    
 
     # Validate user choice
     if user_choice not in options:
