@@ -30,7 +30,7 @@ This is a simple **Rock, Paper, Scissors** game where you can play against the c
 To run the game, simply clone or download the repository and run the Python script.
 
 ```bash
-git clone https://github.com/yourusername/rock-paper-scissors.git
+git clone https://github.com/iamrlz/RPS-Game.git
 cd rock-paper-scissors
 python3 rock_paper_scissors.py
 ```
