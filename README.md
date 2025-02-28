@@ -18,12 +18,15 @@ This is a simple **Rock, Paper, Scissors** game where you can play against the c
 
 4. The game continues until you choose to quit by entering **0**.
 
+* Note: An issue has been created to replace the command-line interface with a GUI.
+
 ## Features
 
 - Play against a randomly selected computer choice.
 - Option to quit the game anytime by entering **0**.
 - User input validation to ensure only valid choices are accepted.
 - Displays the outcome of each round and keeps running until the user decides to quit.
+- Note: An issue has been created to integrate a GUI library for button functionality.
 
 ## Installation
 
